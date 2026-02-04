@@ -5,14 +5,14 @@
 }
 
 :root {
-    --ready-bg: #1a1a2e;
-    --waiting-bg: #e63946;
-    --go-bg: #2ecc71;
-    --early-bg: #f39c12;
-    --result-bg: #1a1a2e;
+    --ready-bg: #0D1F0D;
+    --waiting-bg: #B91C1C;
+    --go-bg: #22C55E;
+    --early-bg: #F97316;
+    --result-bg: #0D1F0D;
     --text-light: #ffffff;
-    --text-muted: rgba(255, 255, 255, 0.7);
-    --accent: #6c5ce7;
+    --text-muted: rgba(255, 255, 255, 0.75);
+    --accent: #22C55E;
 }
 
 html, body {
@@ -21,7 +21,7 @@ html, body {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
 }
