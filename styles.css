@@ -1,0 +1,440 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ready-bg: #1a1a2e;
+    --waiting-bg: #e63946;
+    --go-bg: #2ecc71;
+    --early-bg: #f39c12;
+    --result-bg: #1a1a2e;
+    --text-light: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --accent: #6c5ce7;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.content {
+    text-align: center;
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Ready Screen */
+.ready-screen {
+    background: var(--ready-bg);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.state-ready .ready-screen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ready-screen h1 {
+    font-size: 3.5rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.instructions {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.instructions p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.green-text {
+    color: #2ecc71;
+    font-weight: 700;
+}
+
+.btn-start {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a55eea 100%);
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+.btn-start:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.5);
+}
+
+.btn-start:active {
+    transform: translateY(0);
+}
+
+.best-score {
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.best-score strong {
+    color: #f1c40f;
+}
+
+/* Waiting Screen */
+.waiting-screen {
+    background: var(--waiting-bg);
+    cursor: pointer;
+}
+
+.state-waiting .waiting-screen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.waiting-screen h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.waiting-screen .tip {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+}
+
+.pulse-ring {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    margin: 0 auto 2rem;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+/* Go Screen */
+.go-screen {
+    background: var(--go-bg);
+    cursor: pointer;
+}
+
+.state-go .go-screen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.go-text {
+    font-size: 5rem;
+    color: white;
+    font-weight: 900;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Early Screen */
+.early-screen {
+    background: var(--early-bg);
+}
+
+.state-early .early-screen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.early-screen h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.early-screen p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Result Screen */
+.result-screen {
+    background: var(--result-bg);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.state-result .result-screen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.result-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-time {
+    margin-bottom: 1rem;
+}
+
+.result-time span:first-child {
+    font-size: 4rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -2px;
+}
+
+.result-time .unit {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-left: 0.25rem;
+}
+
+.result-rating {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-comparison {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.result-bar-container {
+    margin-top: 1.5rem;
+}
+
+.result-bar {
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    position: relative;
+    overflow: visible;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #e74c3c 0%, #f39c12 30%, #2ecc71 70%, #00d4aa 100%);
+    transition: width 0.5s ease-out;
+}
+
+.bar-marker {
+    position: absolute;
+    top: -6px;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: left 0.5s ease-out;
+}
+
+.bar-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.result-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.btn-retry, .btn-share {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+}
+
+.btn-retry {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-retry:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-share {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a55eea 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+.btn-share:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.5);
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+    .ready-screen h1 {
+        font-size: 2.5rem;
+    }
+    
+    .go-text {
+        font-size: 4rem;
+    }
+    
+    .result-time span:first-child {
+        font-size: 3rem;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+    }
+    
+    .stats {
+        gap: 1rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ready-bg: #0f0f1a;
+    }
+}
+
+/* Animation for result appearance */
+.result-card {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Celebration particles (added via JS) */
+.particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.5rem;
+    animation: particleFall 1s ease-out forwards;
+}
+
+@keyframes particleFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100px) rotate(360deg);
+        opacity: 0;
+    }
+}

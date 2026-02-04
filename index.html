@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Reflex — Test Your Reaction Time</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="How fast are your reflexes? Test your reaction time and compare to a cheetah, ninja, or sleepy sloth.">
+    <meta property="og:title" content="Reflex — Reaction Time Test">
+    <meta property="og:description" content="I tested my reflexes. Can you beat my time?">
+</head>
+<body>
+    <div id="app" class="state-ready">
+        <!-- Ready State -->
+        <div class="screen ready-screen">
+            <div class="content">
+                <h1>⚡ Reflex</h1>
+                <p class="subtitle">How fast are your reflexes?</p>
+                <div class="instructions">
+                    <p>When the screen turns <span class="green-text">GREEN</span>, tap as fast as you can!</p>
+                </div>
+                <button id="startBtn" class="btn-start">Start Test</button>
+                <div class="best-score" id="bestScore"></div>
+            </div>
+        </div>
+
+        <!-- Waiting State -->
+        <div class="screen waiting-screen">
+            <div class="content">
+                <div class="pulse-ring"></div>
+                <h2>Wait for green...</h2>
+                <p class="tip">Don't click yet!</p>
+            </div>
+        </div>
+
+        <!-- Go State -->
+        <div class="screen go-screen">
+            <div class="content">
+                <h1 class="go-text">TAP!</h1>
+            </div>
+        </div>
+
+        <!-- Too Early State -->
+        <div class="screen early-screen">
+            <div class="content">
+                <h1>😬 Too Early!</h1>
+                <p>Wait for the green screen before clicking.</p>
+                <button id="retryEarlyBtn" class="btn-retry">Try Again</button>
+            </div>
+        </div>
+
+        <!-- Result State -->
+        <div class="screen result-screen">
+            <div class="content">
+                <div class="result-card" id="resultCard">
+                    <div class="result-time">
+                        <span id="resultMs">---</span>
+                        <span class="unit">ms</span>
+                    </div>
+                    <div class="result-rating" id="resultRating"></div>
+                    <div class="result-comparison" id="resultComparison"></div>
+                    <div class="result-bar-container">
+                        <div class="result-bar">
+                            <div class="bar-fill" id="barFill"></div>
+                            <div class="bar-marker" id="barMarker"></div>
+                        </div>
+                        <div class="bar-labels">
+                            <span>🦥 Slow</span>
+                            <span>⚡ Fast</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button id="retryBtn" class="btn-retry">Try Again</button>
+                    <button id="shareBtn" class="btn-share">Share Result</button>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">This attempt</span>
+                        <span class="stat-value" id="attemptNum">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Best ever</span>
+                        <span class="stat-value" id="bestEver">---</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Average</span>
+                        <span class="stat-value" id="avgTime">---</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
